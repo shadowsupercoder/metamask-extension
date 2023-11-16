@@ -59,16 +59,12 @@ const t = (key) => {
       return 'Enter the URL of the IPFS CID gateway to use for ENS content resolution.';
     case 'preferredLedgerConnectionType':
       return 'Preferred ledger connection type';
-    case 'dismissReminderField':
-      return 'Dismiss Secret Recovery Phrase backup reminder';
     case 'dismissReminderDescriptionField':
       return 'Turn this on to dismiss the Secret Recovery Phrase backup reminder message. We highly recommend that you back up your Secret Recovery Phrase to avoid loss of funds';
     case 'Contacts':
       return 'Contacts';
     case 'securityAndPrivacy':
       return 'Security & privacy';
-    case 'revealSeedWords':
-      return 'Reveal Secret Recovery Phrase';
     case 'showIncomingTransactions':
       return 'Show incoming transactions';
     case 'usePhishingDetection':

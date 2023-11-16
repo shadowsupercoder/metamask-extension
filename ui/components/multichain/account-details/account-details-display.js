@@ -9,41 +9,41 @@ import { setAccountLabel } from '../../../store/actions';
 import {
   getCurrentChainId,
   getHardwareWalletType,
-  getMetaMaskKeyrings,
+  // getMetaMaskKeyrings,
 } from '../../../selectors';
-import { isAbleToExportAccount } from '../../../helpers/utils/util';
+// import { isAbleToExportAccount } from '../../../helpers/utils/util';
 import {
-  ButtonSecondarySize,
-  ButtonSecondary,
+  // ButtonSecondarySize,
+  // ButtonSecondary,
   Box,
 } from '../../component-library';
 import {
   AlignItems,
   Display,
   FlexDirection,
-  TextVariant,
+  // TextVariant,
 } from '../../../helpers/constants/design-system';
 import { MetaMetricsContext } from '../../../contexts/metametrics';
 import {
   MetaMetricsEventCategory,
-  MetaMetricsEventKeyType,
+  // MetaMetricsEventKeyType,
   MetaMetricsEventName,
 } from '../../../../shared/constants/metametrics';
-import { useI18nContext } from '../../../hooks/useI18nContext';
+// import { useI18nContext } from '../../../hooks/useI18nContext';
 
 export const AccountDetailsDisplay = ({
   accounts,
   accountName,
   address,
-  onExportClick,
+  // onExportClick,
 }) => {
   const dispatch = useDispatch();
   const trackEvent = useContext(MetaMetricsContext);
-  const t = useI18nContext();
+  // const t = useI18nContext();
 
-  const keyrings = useSelector(getMetaMaskKeyrings);
-  const keyring = keyrings.find((kr) => kr.accounts.includes(address));
-  const exportPrivateKeyFeatureEnabled = isAbleToExportAccount(keyring?.type);
+  // const keyrings = useSelector(getMetaMaskKeyrings);
+  // const keyring = keyrings.find((kr) => kr.accounts.includes(address));
+  // const exportPrivateKeyFeatureEnabled = isAbleToExportAccount(keyring?.type);
 
   const chainId = useSelector(getCurrentChainId);
   const deviceName = useSelector(getHardwareWalletType);
@@ -71,26 +71,6 @@ export const AccountDetailsDisplay = ({
         accounts={accounts}
       />
       <QrView Qr={{ data: address }} />
-      {exportPrivateKeyFeatureEnabled ? (
-        <ButtonSecondary
-          block
-          size={ButtonSecondarySize.Lg}
-          variant={TextVariant.bodyMd}
-          onClick={() => {
-            trackEvent({
-              category: MetaMetricsEventCategory.Accounts,
-              event: MetaMetricsEventName.KeyExportSelected,
-              properties: {
-                key_type: MetaMetricsEventKeyType.Pkey,
-                location: 'Account Details Modal',
-              },
-            });
-            onExportClick();
-          }}
-        >
-          {t('showPrivateKey')}
-        </ButtonSecondary>
-      ) : null}
     </Box>
   );
 };
@@ -111,5 +91,5 @@ AccountDetailsDisplay.propTypes = {
   /**
    * Executes upon Export button click
    */
-  onExportClick: PropTypes.func.isRequired,
+  // onExportClick: PropTypes.func.isRequired,
 };

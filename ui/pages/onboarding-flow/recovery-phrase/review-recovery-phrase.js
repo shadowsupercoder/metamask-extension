@@ -1,43 +1,46 @@
-import React, { useState, useContext } from 'react';
-import { useHistory, useLocation } from 'react-router-dom';
-import PropTypes from 'prop-types';
+import React from 'react';
+// import {
+//   // useHistory,
+//   // useLocation,
+// } from 'react-router-dom';
+// import PropTypes from 'prop-types';
 import Box from '../../../components/ui/box';
-import Button from '../../../components/ui/button';
+// import Button from '../../../components/ui/button';
 import Typography from '../../../components/ui/typography';
-import { useCopyToClipboard } from '../../../hooks/useCopyToClipboard';
+// import { useCopyToClipboard } from '../../../hooks/useCopyToClipboard';
 import { useI18nContext } from '../../../hooks/useI18nContext';
-import { ONBOARDING_CONFIRM_SRP_ROUTE } from '../../../helpers/constants/routes';
+// import { ONBOARDING_CONFIRM_SRP_ROUTE } from '../../../helpers/constants/routes';
 import {
   TEXT_ALIGN,
   TypographyVariant,
   JustifyContent,
   FONT_WEIGHT,
-  IconColor,
+  // IconColor,
 } from '../../../helpers/constants/design-system';
 import {
   ThreeStepProgressBar,
   threeStepStages,
 } from '../../../components/app/step-progress-bar';
-import {
-  MetaMetricsEventCategory,
-  MetaMetricsEventName,
-} from '../../../../shared/constants/metametrics';
-import { MetaMetricsContext } from '../../../contexts/metametrics';
-import { Icon, IconName } from '../../../components/component-library';
-import RecoveryPhraseChips from './recovery-phrase-chips';
+// import {
+//   MetaMetricsEventCategory,
+//   // MetaMetricsEventName,
+// } from '../../../../shared/constants/metametrics';
+// import { MetaMetricsContext } from '../../../contexts/metametrics';
+// import { Icon, IconName } from '../../../components/component-library';
+// import RecoveryPhraseChips from './recovery-phrase-chips';
 
-export default function RecoveryPhrase({ secretRecoveryPhrase }) {
-  const history = useHistory();
+export default function RecoveryPhrase() {
+  // const history = useHistory();
   const t = useI18nContext();
-  const { search } = useLocation();
-  const [copied, handleCopy] = useCopyToClipboard();
-  const [phraseRevealed, setPhraseRevealed] = useState(false);
-  const [hiddenPhrase, setHiddenPhrase] = useState(false);
-  const searchParams = new URLSearchParams(search);
-  const isFromReminderParam = searchParams.get('isFromReminder')
-    ? '/?isFromReminder=true'
-    : '';
-  const trackEvent = useContext(MetaMetricsContext);
+  // const { search } = useLocation();
+  // const [copied, handleCopy] = useCopyToClipboard();
+  // const [phraseRevealed, setPhraseRevealed] = useState(false);
+  // const [hiddenPhrase, setHiddenPhrase] = useState(false);
+  // const searchParams = new URLSearchParams(search);
+  // const isFromReminderParam = searchParams.get('isFromReminder')
+  //   ? '/?isFromReminder=true'
+  //   : '';
+  // const trackEvent = useContext(MetaMetricsContext);
 
   return (
     <div className="recovery-phrase" data-testid="recovery-phrase">
@@ -93,7 +96,7 @@ export default function RecoveryPhrase({ secretRecoveryPhrase }) {
           </li>
         </ul>
       </Box>
-      <RecoveryPhraseChips
+      {/* <RecoveryPhraseChips
         secretRecoveryPhrase={secretRecoveryPhrase.split(' ')}
         phraseRevealed={phraseRevealed && !hiddenPhrase}
         hiddenPhrase={hiddenPhrase}
@@ -168,11 +171,11 @@ export default function RecoveryPhrase({ secretRecoveryPhrase }) {
             {t('revealSeedWords')}
           </Button>
         )}
-      </div>
+      </div>*/}
     </div>
   );
 }
 
 RecoveryPhrase.propTypes = {
-  secretRecoveryPhrase: PropTypes.string,
+  // secretRecoveryPhrase: PropTypes.string,
 };

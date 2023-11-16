@@ -8,7 +8,7 @@ import {
 import { ENVIRONMENT_TYPE_POPUP } from '../../../../shared/constants/app';
 import {
   MetaMetricsEventCategory,
-  MetaMetricsEventKeyType,
+  // MetaMetricsEventKeyType,
   MetaMetricsEventName,
 } from '../../../../shared/constants/metametrics';
 import { IPFS_DEFAULT_GATEWAY_URL } from '../../../../shared/constants/network';
@@ -19,10 +19,10 @@ import {
   CRYPTOCOMPARE_LINK,
   PRIVACY_POLICY_LINK,
 } from '../../../../shared/lib/ui-utils';
-import SRPQuiz from '../../../components/app/srp-quiz-modal/SRPQuiz';
+// import SRPQuiz from '../../../components/app/srp-quiz-modal/SRPQuiz';
 import {
   Button,
-  BUTTON_SIZES,
+  // BUTTON_SIZES,
   Box,
   Text,
 } from '../../../components/component-library';
@@ -82,7 +82,7 @@ export default class SecurityTab extends PureComponent {
   state = {
     ipfsGateway: this.props.ipfsGateway || IPFS_DEFAULT_GATEWAY_URL,
     ipfsGatewayError: '',
-    srpQuizModalVisible: false,
+    // srpQuizModalVisible: false,
     ipfsToggle: this.props.ipfsGateway.length > 0,
   };
 
@@ -121,57 +121,57 @@ export default class SecurityTab extends PureComponent {
     toggleMethod(!value);
   }
 
-  hideSrpQuizModal = () => this.setState({ srpQuizModalVisible: false });
+  // hideSrpQuizModal = () => this.setState({ srpQuizModalVisible: false });
 
-  renderSeedWords() {
-    const { t } = this.context;
+  // renderSeedWords() {
+  //   const { t } = this.context;
 
-    return (
-      <>
-        <div
-          ref={this.settingsRefs[0]}
-          className="settings-page__security-tab-sub-header"
-        >
-          {t('secretRecoveryPhrase')}
-        </div>
-        <div className="settings-page__content-padded">
-          <Button
-            data-testid="reveal-seed-words"
-            type="danger"
-            size={BUTTON_SIZES.LG}
-            onClick={(event) => {
-              event.preventDefault();
-              this.context.trackEvent({
-                category: MetaMetricsEventCategory.Settings,
-                event: MetaMetricsEventName.KeyExportSelected,
-                properties: {
-                  key_type: MetaMetricsEventKeyType.Srp,
-                  location: 'Settings',
-                },
-              });
-              this.context.trackEvent({
-                category: MetaMetricsEventCategory.Settings,
-                event: MetaMetricsEventName.SrpRevealClicked,
-                properties: {
-                  key_type: MetaMetricsEventKeyType.Srp,
-                  location: 'Settings',
-                },
-              });
-              this.setState({ srpQuizModalVisible: true });
-            }}
-          >
-            {t('revealSeedWords')}
-          </Button>
-          {this.state.srpQuizModalVisible && (
-            <SRPQuiz
-              isOpen={this.state.srpQuizModalVisible}
-              onClose={this.hideSrpQuizModal}
-            />
-          )}
-        </div>
-      </>
-    );
-  }
+  //   return (
+  //     <>
+  //       <div
+  //         ref={this.settingsRefs[0]}
+  //         className="settings-page__security-tab-sub-header"
+  //       >
+  //         {t('secretRecoveryPhrase')}
+  //       </div>
+  //       <div className="settings-page__content-padded">
+  //         <Button
+  //           data-testid="reveal-seed-words"
+  //           type="danger"
+  //           size={BUTTON_SIZES.LG}
+  //           onClick={(event) => {
+  //             event.preventDefault();
+  //             this.context.trackEvent({
+  //               category: MetaMetricsEventCategory.Settings,
+  //               event: MetaMetricsEventName.KeyExportSelected,
+  //               properties: {
+  //                 key_type: MetaMetricsEventKeyType.Srp,
+  //                 location: 'Settings',
+  //               },
+  //             });
+  //             this.context.trackEvent({
+  //               category: MetaMetricsEventCategory.Settings,
+  //               event: MetaMetricsEventName.SrpRevealClicked,
+  //               properties: {
+  //                 key_type: MetaMetricsEventKeyType.Srp,
+  //                 location: 'Settings',
+  //               },
+  //             });
+  //             this.setState({ srpQuizModalVisible: true });
+  //           }}
+  //         >
+  //           {t('revealSeedWords')}
+  //         </Button>
+  //         {this.state.srpQuizModalVisible && (
+  //           <SRPQuiz
+  //             isOpen={this.state.srpQuizModalVisible}
+  //             onClose={this.hideSrpQuizModal}
+  //           />
+  //         )}
+  //       </div>
+  //     </>
+  //   );
+  // }
 
   renderIncomingTransactionsOptIn() {
     const {
@@ -819,10 +819,6 @@ export default class SecurityTab extends PureComponent {
     return (
       <div className="settings-page__body">
         {warning && <div className="settings-tab__error">{warning}</div>}
-        <span className="settings-page__security-tab-sub-header__bold">
-          {this.context.t('security')}
-        </span>
-        {this.renderSeedWords()}
         <span className="settings-page__security-tab-sub-header__bold">
           {this.context.t('privacy')}
         </span>
