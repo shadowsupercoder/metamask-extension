@@ -2564,48 +2564,48 @@ export function hideWarning() {
   };
 }
 
-export function exportAccount(
-  password: string,
-  address: string,
-  setPrivateKey: (key: string) => void,
-  setShowHoldToReveal: (show: boolean) => void,
-): ThunkAction<void, MetaMaskReduxState, unknown, AnyAction> {
-  return function (dispatch) {
-    dispatch(showLoadingIndication());
+// export function exportAccount(
+//   password: string,
+//   address: string,
+//   setPrivateKey: (key: string) => void,
+//   setShowHoldToReveal: (show: boolean) => void,
+// ): ThunkAction<void, MetaMaskReduxState, unknown, AnyAction> {
+//   return function (dispatch) {
+//     dispatch(showLoadingIndication());
 
-    log.debug(`background.verifyPassword`);
-    return new Promise<string>((resolve, reject) => {
-      callBackgroundMethod('verifyPassword', [password], function (err) {
-        if (err) {
-          log.error('Error in verifying password.');
-          dispatch(hideLoadingIndication());
-          dispatch(displayWarning('Incorrect Password.'));
-          reject(err);
-          return;
-        }
-        log.debug(`background.exportAccount`);
-        callBackgroundMethod<string>(
-          'exportAccount',
-          [address, password],
-          function (err2, result) {
-            dispatch(hideLoadingIndication());
+//     log.debug(`background.verifyPassword`);
+//     return new Promise<string>((resolve, reject) => {
+//       callBackgroundMethod('verifyPassword', [password], function (err) {
+//         if (err) {
+//           log.error('Error in verifying password.');
+//           dispatch(hideLoadingIndication());
+//           dispatch(displayWarning('Incorrect Password.'));
+//           reject(err);
+//           return;
+//         }
+//         log.debug(`background.exportAccount`);
+//         callBackgroundMethod<string>(
+//           'exportAccount',
+//           [address, password],
+//           function (err2, result) {
+//             dispatch(hideLoadingIndication());
 
-            if (err2) {
-              logErrorWithMessage(err2);
-              dispatch(displayWarning('Had a problem exporting the account.'));
-              reject(err2);
-              return;
-            }
+//             if (err2) {
+//               logErrorWithMessage(err2);
+//               dispatch(displayWarning('Had a problem exporting the account.'));
+//               reject(err2);
+//               return;
+//             }
 
-            setPrivateKey(result as string);
-            setShowHoldToReveal(true);
-            resolve(result as string);
-          },
-        );
-      });
-    });
-  };
-}
+//             setPrivateKey(result as string);
+//             setShowHoldToReveal(true);
+//             resolve(result as string);
+//           },
+//         );
+//       });
+//     });
+//   };
+// }
 
 export function exportAccounts(
   password: string,

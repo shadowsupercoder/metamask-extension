@@ -68,7 +68,7 @@ describe('AccountDetails', () => {
       queryByText(shortenAddress(toChecksumHexAddress(address))),
     ).toBeInTheDocument();
 
-    expect(queryByText('Show private key')).toBeInTheDocument();
+    expect(queryByText('Show private key')).not.toBeInTheDocument();
     expect(queryByPlaceholderText('Password')).toBeInTheDocument();
   });
 
